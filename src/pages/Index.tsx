@@ -1,10 +1,12 @@
-
 import { useState } from "react";
-import { Search, Filter, Star, TrendingUp, Users, DollarSign, Clock } from "lucide-react";
+import { Search, Filter, Star, TrendingUp, Users, DollarSign, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { GlassCard } from "@/components/GlassCard";
+import { MetricCard } from "@/components/MetricCard";
+import { FloatingButton } from "@/components/FloatingButton";
 
 // Sample startup ideas data
 const startupIdeas = [
@@ -138,9 +140,9 @@ const Index = () => {
 
   const getCompetitionColor = (competition) => {
     switch (competition) {
-      case "Low": return "text-green-400";
-      case "Medium": return "text-yellow-400";
-      case "High": return "text-red-400";
+      case "Low": return "text-emerald-400";
+      case "Medium": return "text-amber-400";
+      case "High": return "text-rose-400";
       default: return "text-gray-400";
     }
   };
@@ -148,123 +150,119 @@ const Index = () => {
   if (selectedIdea) {
     const idea = startupIdeas.find(i => i.id === selectedIdea);
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-950 via-green-900 to-teal-800 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-800 relative">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
+          className="absolute inset-0 bg-cover bg-center opacity-10"
           style={{ backgroundImage: 'url(/lovable-uploads/a4bb8de8-fdb3-410a-9d63-9a22c4f6f69c.png)' }}
         />
         
-        {/* Glass Navigation */}
-        <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/10 border-b border-white/20">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Navigation */}
+        <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
+          <div className="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between">
             <button 
               onClick={() => setSelectedIdea(null)}
-              className="text-2xl font-bold text-white hover:text-green-300 transition-colors"
+              className="flex items-center gap-3 text-white/90 hover:text-white transition-colors font-display text-lg font-semibold"
             >
               ← Spuddish Garden
             </button>
-            <div className="flex space-x-4">
-              <Button variant="ghost" className="text-white hover:bg-white/20">
+            <div className="flex gap-3">
+              <FloatingButton>
                 Save Idea
-              </Button>
-              <Button variant="ghost" className="text-white hover:bg-white/20">
+              </FloatingButton>
+              <FloatingButton variant="ghost">
                 Share
-              </Button>
+              </FloatingButton>
             </div>
           </div>
         </nav>
 
         {/* Idea Detail Content */}
-        <div className="pt-20 px-6 max-w-6xl mx-auto">
+        <div className="pt-24 px-8 max-w-6xl mx-auto pb-16">
           {/* Hero Section */}
-          <div className="relative mb-12 rounded-3xl overflow-hidden backdrop-blur-xl bg-white/10 border border-white/20 p-8">
-            <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-6">
-                {idea.tags.map((tag, index) => (
-                  <Badge key={index} variant="secondary" className="bg-white/20 text-white border-white/30">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{idea.title}</h1>
-              <p className="text-xl text-green-100 mb-8">{idea.description}</p>
-              
-              {/* Metrics Dashboard */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="backdrop-blur-md bg-white/10 rounded-2xl p-4 border border-white/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Star className="w-5 h-5 text-yellow-400" />
-                    <span className="text-green-100 text-sm">Viability Score</span>
-                  </div>
-                  <div className="text-2xl font-bold text-white">{idea.viabilityScore}/10</div>
-                </div>
-                <div className="backdrop-blur-md bg-white/10 rounded-2xl p-4 border border-white/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <DollarSign className="w-5 h-5 text-green-400" />
-                    <span className="text-green-100 text-sm">Market Size</span>
-                  </div>
-                  <div className="text-2xl font-bold text-white">{idea.marketSize}</div>
-                </div>
-                <div className="backdrop-blur-md bg-white/10 rounded-2xl p-4 border border-white/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <TrendingUp className="w-5 h-5 text-blue-400" />
-                    <span className="text-green-100 text-sm">Competition</span>
-                  </div>
-                  <div className={`text-2xl font-bold ${getCompetitionColor(idea.competition)}`}>
-                    {idea.competition}
-                  </div>
-                </div>
-                <div className="backdrop-blur-md bg-white/10 rounded-2xl p-4 border border-white/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
-                    <span className="text-green-100 text-sm">Time to Market</span>
-                  </div>
-                  <div className="text-2xl font-bold text-white">{idea.timeToMarket}</div>
-                </div>
-              </div>
+          <div className="mb-16">
+            <div className="flex flex-wrap gap-3 mb-8">
+              {idea.tags.map((tag, index) => (
+                <Badge key={index} className="glass-button text-white/80 border-white/10 font-medium px-4 py-2">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-6 leading-tight">
+              {idea.title}
+            </h1>
+            <p className="text-xl text-white/70 mb-12 max-w-4xl font-body leading-relaxed">
+              {idea.description}
+            </p>
+            
+            {/* Metrics Dashboard */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <MetricCard
+                icon={<Star className="w-6 h-6" />}
+                label="Viability Score"
+                value={`${idea.viabilityScore}/10`}
+                color="text-amber-400"
+              />
+              <MetricCard
+                icon={<DollarSign className="w-6 h-6" />}
+                label="Market Size"
+                value={idea.marketSize}
+                color="text-emerald-400"
+              />
+              <MetricCard
+                icon={<TrendingUp className="w-6 h-6" />}
+                label="Competition"
+                value={idea.competition}
+                color={getCompetitionColor(idea.competition)}
+              />
+              <MetricCard
+                icon={<Clock className="w-6 h-6" />}
+                label="Time to Market"
+                value={idea.timeToMarket}
+                color="text-blue-400"
+              />
             </div>
           </div>
 
-          {/* Detailed Analysis Sections */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 border border-white/20">
-              <h3 className="text-2xl font-bold text-white mb-6">Market Analysis</h3>
-              <div className="space-y-4 text-green-100">
+          {/* Analysis Sections */}
+          <div className="grid md:grid-cols-2 gap-8">
+            <GlassCard className="p-8">
+              <h3 className="text-2xl font-display font-semibold text-white mb-6">Market Analysis</h3>
+              <div className="space-y-4 text-white/70 font-body leading-relaxed">
                 <p>The {idea.category.toLowerCase()} market is experiencing rapid growth, with increasing demand for innovative solutions.</p>
                 <p>Target market segments include early adopters willing to pay premium prices for cutting-edge solutions.</p>
                 <p>Key success factors include product-market fit, scalable technology infrastructure, and strategic partnerships.</p>
               </div>
-            </div>
+            </GlassCard>
 
-            <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 border border-white/20">
-              <h3 className="text-2xl font-bold text-white mb-6">Technical Requirements</h3>
-              <div className="space-y-4 text-green-100">
+            <GlassCard className="p-8">
+              <h3 className="text-2xl font-display font-semibold text-white mb-6">Technical Requirements</h3>
+              <div className="space-y-4 text-white/70 font-body leading-relaxed">
                 <p>Development complexity: Medium to High</p>
                 <p>Required team: 3-5 full-stack developers, 1 UI/UX designer, 1 product manager</p>
                 <p>Technology stack: Modern web/mobile frameworks with cloud infrastructure</p>
                 <p>Estimated development time: {idea.timeToMarket}</p>
               </div>
-            </div>
+            </GlassCard>
 
-            <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 border border-white/20">
-              <h3 className="text-2xl font-bold text-white mb-6">Go-to-Market Strategy</h3>
-              <div className="space-y-4 text-green-100">
+            <GlassCard className="p-8">
+              <h3 className="text-2xl font-display font-semibold text-white mb-6">Go-to-Market Strategy</h3>
+              <div className="space-y-4 text-white/70 font-body leading-relaxed">
                 <p>Phase 1: MVP development and beta testing with select users</p>
                 <p>Phase 2: Product launch with targeted digital marketing campaigns</p>
                 <p>Phase 3: Scale through partnerships and word-of-mouth growth</p>
               </div>
-            </div>
+            </GlassCard>
 
-            <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 border border-white/20">
-              <h3 className="text-2xl font-bold text-white mb-6">Financial Projections</h3>
-              <div className="space-y-4 text-green-100">
+            <GlassCard className="p-8">
+              <h3 className="text-2xl font-display font-semibold text-white mb-6">Financial Projections</h3>
+              <div className="space-y-4 text-white/70 font-body leading-relaxed">
                 <p>Year 1 Revenue: $100K - $500K</p>
                 <p>Year 2 Revenue: $1M - $5M</p>
                 <p>Year 3 Revenue: $5M - $15M</p>
                 <p>Funding needed: $500K - $2M for initial development and marketing</p>
               </div>
-            </div>
+            </GlassCard>
           </div>
         </div>
       </div>
@@ -272,104 +270,106 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-950 via-green-900 to-teal-800 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-800 relative">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20"
+        className="absolute inset-0 bg-cover bg-center opacity-10"
         style={{ backgroundImage: 'url(/lovable-uploads/a4bb8de8-fdb3-410a-9d63-9a22c4f6f69c.png)' }}
       />
       
-      {/* Glass Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/10 border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-white">Spuddish Garden</h1>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-white hover:bg-white/20">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div className="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between">
+          <h1 className="font-display text-2xl font-bold text-white">Spuddish Garden</h1>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" className="text-white/70 hover:text-white hover:bg-white/5 font-medium">
               About
             </Button>
-            <Button variant="ghost" className="text-white hover:bg-white/20">
+            <Button variant="ghost" className="text-white/70 hover:text-white hover:bg-white/5 font-medium">
               Contact
             </Button>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section with Featured Idea */}
-      <div className="pt-24 px-6 max-w-7xl mx-auto">
+      {/* Hero Section */}
+      <div className="pt-28 px-8 max-w-6xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-6xl md:text-7xl font-display font-bold text-white mb-8 leading-tight">
+            Cultivate Your Next
+            <span className="block text-gradient mt-2">
+              Big Idea
+            </span>
+          </h2>
+          <p className="text-xl text-white/60 max-w-2xl mx-auto font-body leading-relaxed">
+            Discover expertly curated, co-founder validated startup opportunities for 2025
+          </p>
+        </div>
+        
+        {/* Featured Idea */}
         {featuredIdea && (
-          <div className="mb-16 relative">
-            <div className="text-center mb-8">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
-                Cultivate Your Next
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
-                  Big Idea
-                </span>
-              </h2>
-              <p className="text-xl text-green-100 max-w-2xl mx-auto">
-                Discover expertly curated, co-founder validated startup opportunities for 2025
-              </p>
-            </div>
-            
-            {/* Featured Idea Card */}
-            <div className="relative max-w-4xl mx-auto">
-              <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer transform hover:scale-105"
-                   onClick={() => setSelectedIdea(featuredIdea.id)}>
-                <div className="flex items-center justify-between mb-4">
-                  <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-semibold">
-                    🌟 Featured Idea
-                  </Badge>
-                  <div className="flex items-center gap-2">
-                    <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                    <span className="text-white font-semibold">{featuredIdea.viabilityScore}/10</span>
-                  </div>
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-4">{featuredIdea.title}</h3>
-                <p className="text-green-100 text-lg mb-6">{featuredIdea.description}</p>
-                <div className="flex flex-wrap gap-4">
-                  <div className="flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-green-400" />
-                    <span className="text-white">{featuredIdea.marketSize} Market</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-blue-400" />
-                    <span className={`${getCompetitionColor(featuredIdea.competition)}`}>
-                      {featuredIdea.competition} Competition
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
-                    <span className="text-white">{featuredIdea.timeToMarket}</span>
-                  </div>
+          <div className="mb-20">
+            <GlassCard 
+              className="p-8 max-w-4xl mx-auto"
+              onClick={() => setSelectedIdea(featuredIdea.id)}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <Badge className="bg-gradient-to-r from-amber-400 to-orange-400 text-black font-semibold px-4 py-2">
+                  ✦ Featured Idea
+                </Badge>
+                <div className="flex items-center gap-2">
+                  <Star className="w-5 h-5 text-amber-400 fill-current" />
+                  <span className="text-white font-semibold">{featuredIdea.viabilityScore}/10</span>
                 </div>
               </div>
-            </div>
+              <h3 className="text-3xl font-display font-bold text-white mb-4">{featuredIdea.title}</h3>
+              <p className="text-white/70 text-lg mb-8 font-body leading-relaxed">{featuredIdea.description}</p>
+              <div className="flex flex-wrap gap-6">
+                <div className="flex items-center gap-2 text-white/80">
+                  <DollarSign className="w-5 h-5 text-emerald-400" />
+                  <span className="font-medium">{featuredIdea.marketSize} Market</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/80">
+                  <TrendingUp className="w-5 h-5 text-blue-400" />
+                  <span className={`font-medium ${getCompetitionColor(featuredIdea.competition)}`}>
+                    {featuredIdea.competition} Competition
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-white/80">
+                  <Clock className="w-5 h-5 text-purple-400" />
+                  <span className="font-medium">{featuredIdea.timeToMarket}</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 mt-6 text-white/60">
+                <span className="font-medium">Explore this idea</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </GlassCard>
           </div>
         )}
 
-        {/* Search and Filter Section */}
-        <div className="mb-12">
+        {/* Search and Filter */}
+        <div className="mb-16">
           <div className="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto">
-            {/* Search Bar */}
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-green-300 w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
               <Input
                 placeholder="Search startup ideas..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 backdrop-blur-xl bg-white/10 border-white/20 text-white placeholder:text-green-200 rounded-2xl h-14 text-lg"
+                className="pl-12 glass-input text-white placeholder:text-white/40 h-14 text-lg font-body"
               />
             </div>
             
-            {/* Category Filter */}
-            <div className="flex items-center gap-2 backdrop-blur-xl bg-white/10 rounded-2xl p-2 border border-white/20">
-              <Filter className="text-green-300 w-5 h-5 ml-2" />
+            <div className="flex items-center gap-3 glass-button px-4 py-3">
+              <Filter className="text-white/60 w-5 h-5" />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="bg-transparent text-white border-none outline-none pr-4"
+                className="bg-transparent text-white border-none outline-none font-medium"
               >
                 {categories.map(category => (
-                  <option key={category} value={category} className="bg-green-900 text-white">
+                  <option key={category} value={category} className="bg-slate-800 text-white">
                     {category}
                   </option>
                 ))}
@@ -379,69 +379,67 @@ const Index = () => {
         </div>
 
         {/* Ideas Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
           {filteredIdeas.filter(idea => !idea.featured).map((idea) => (
-            <Card
+            <GlassCard
               key={idea.id}
-              className="backdrop-blur-xl bg-white/10 border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:shadow-2xl rounded-3xl overflow-hidden"
+              className="p-6"
               onClick={() => setSelectedIdea(idea.id)}
             >
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
-                    {idea.category}
-                  </Badge>
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                    <span className="text-white font-semibold">{idea.viabilityScore}</span>
-                  </div>
-                </div>
-                
-                <h3 className="text-xl font-bold text-white mb-3">{idea.title}</h3>
-                <p className="text-green-100 mb-4 line-clamp-3">{idea.description}</p>
-                
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-green-200 text-sm">Market Size</span>
-                    <span className="text-white font-semibold">{idea.marketSize}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-green-200 text-sm">Competition</span>
-                    <span className={`font-semibold ${getCompetitionColor(idea.competition)}`}>
-                      {idea.competition}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-green-200 text-sm">Time to Market</span>
-                    <span className="text-white font-semibold">{idea.timeToMarket}</span>
-                  </div>
-                </div>
-                
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {idea.tags.slice(0, 2).map((tag, index) => (
-                    <Badge key={index} variant="outline" className="text-xs border-white/30 text-green-200">
-                      {tag}
-                    </Badge>
-                  ))}
+              <div className="flex items-center justify-between mb-4">
+                <Badge className="glass-button border-white/10 text-white/80 font-medium">
+                  {idea.category}
+                </Badge>
+                <div className="flex items-center gap-1">
+                  <Star className="w-4 h-4 text-amber-400 fill-current" />
+                  <span className="text-white font-semibold">{idea.viabilityScore}</span>
                 </div>
               </div>
-            </Card>
+              
+              <h3 className="text-xl font-display font-semibold text-white mb-3">{idea.title}</h3>
+              <p className="text-white/60 mb-6 line-clamp-3 font-body leading-relaxed">{idea.description}</p>
+              
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-white/50 text-sm font-medium">Market Size</span>
+                  <span className="text-white font-semibold">{idea.marketSize}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-white/50 text-sm font-medium">Competition</span>
+                  <span className={`font-semibold ${getCompetitionColor(idea.competition)}`}>
+                    {idea.competition}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-white/50 text-sm font-medium">Time to Market</span>
+                  <span className="text-white font-semibold">{idea.timeToMarket}</span>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-2 mt-6">
+                {idea.tags.slice(0, 2).map((tag, index) => (
+                  <Badge key={index} variant="outline" className="text-xs border-white/20 text-white/60">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </GlassCard>
           ))}
         </div>
 
         {/* Footer */}
-        <footer className="text-center py-12 border-t border-white/20 backdrop-blur-xl bg-white/5">
-          <div className="text-white/60 mb-4">
+        <footer className="text-center py-16 border-t border-white/10 glass-nav">
+          <div className="text-white/40 mb-6 font-body">
             © 2025 Spuddish Garden. Cultivating the future of startups.
           </div>
-          <div className="flex justify-center space-x-6">
-            <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10">
+          <div className="flex justify-center gap-8">
+            <Button variant="ghost" className="text-white/40 hover:text-white/70 hover:bg-white/5">
               Privacy
             </Button>
-            <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10">
+            <Button variant="ghost" className="text-white/40 hover:text-white/70 hover:bg-white/5">
               Terms
             </Button>
-            <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10">
+            <Button variant="ghost" className="text-white/40 hover:text-white/70 hover:bg-white/5">
               Contact
             </Button>
           </div>
