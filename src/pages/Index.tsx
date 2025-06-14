@@ -150,40 +150,37 @@ const Index = () => {
   if (selectedIdea) {
     const idea = startupIdeas.find(i => i.id === selectedIdea);
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-800 relative">
-        {/* Background Image */}
+      <div className="min-h-screen relative">
+        {/* Background Image - Clean and Visible */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-10"
+          className="fixed inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(/lovable-uploads/a4bb8de8-fdb3-410a-9d63-9a22c4f6f69c.png)' }}
         />
+        <div className="fixed inset-0 bg-black/30" />
         
         {/* Navigation */}
-        <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
-          <div className="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between">
+        <nav className="fixed top-0 left-0 right-0 z-50 clean-nav">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <button 
               onClick={() => setSelectedIdea(null)}
-              className="flex items-center gap-3 text-white/90 hover:text-white transition-colors font-display text-lg font-semibold"
+              className="flex items-center gap-3 text-white hover:text-white/80 transition-colors font-display text-xl font-semibold"
             >
               ← Spuddish Garden
             </button>
             <div className="flex gap-3">
-              <FloatingButton>
-                Save Idea
-              </FloatingButton>
-              <FloatingButton variant="ghost">
-                Share
-              </FloatingButton>
+              <FloatingButton>Save Idea</FloatingButton>
+              <FloatingButton variant="ghost">Share</FloatingButton>
             </div>
           </div>
         </nav>
 
-        {/* Idea Detail Content */}
-        <div className="pt-24 px-8 max-w-6xl mx-auto pb-16">
+        {/* Content */}
+        <div className="relative z-10 pt-20 px-6 max-w-7xl mx-auto pb-16">
           {/* Hero Section */}
-          <div className="mb-16">
+          <div className="mb-16 mt-8">
             <div className="flex flex-wrap gap-3 mb-8">
               {idea.tags.map((tag, index) => (
-                <Badge key={index} className="glass-button text-white/80 border-white/10 font-medium px-4 py-2">
+                <Badge key={index} className="clean-button text-white border-white/30 font-medium px-4 py-2">
                   {tag}
                 </Badge>
               ))}
@@ -191,7 +188,7 @@ const Index = () => {
             <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-6 leading-tight">
               {idea.title}
             </h1>
-            <p className="text-xl text-white/70 mb-12 max-w-4xl font-body leading-relaxed">
+            <p className="text-xl text-white/90 mb-12 max-w-4xl font-body leading-relaxed">
               {idea.description}
             </p>
             
@@ -228,7 +225,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <GlassCard className="p-8">
               <h3 className="text-2xl font-display font-semibold text-white mb-6">Market Analysis</h3>
-              <div className="space-y-4 text-white/70 font-body leading-relaxed">
+              <div className="space-y-4 text-white/80 font-body leading-relaxed">
                 <p>The {idea.category.toLowerCase()} market is experiencing rapid growth, with increasing demand for innovative solutions.</p>
                 <p>Target market segments include early adopters willing to pay premium prices for cutting-edge solutions.</p>
                 <p>Key success factors include product-market fit, scalable technology infrastructure, and strategic partnerships.</p>
@@ -237,7 +234,7 @@ const Index = () => {
 
             <GlassCard className="p-8">
               <h3 className="text-2xl font-display font-semibold text-white mb-6">Technical Requirements</h3>
-              <div className="space-y-4 text-white/70 font-body leading-relaxed">
+              <div className="space-y-4 text-white/80 font-body leading-relaxed">
                 <p>Development complexity: Medium to High</p>
                 <p>Required team: 3-5 full-stack developers, 1 UI/UX designer, 1 product manager</p>
                 <p>Technology stack: Modern web/mobile frameworks with cloud infrastructure</p>
@@ -247,7 +244,7 @@ const Index = () => {
 
             <GlassCard className="p-8">
               <h3 className="text-2xl font-display font-semibold text-white mb-6">Go-to-Market Strategy</h3>
-              <div className="space-y-4 text-white/70 font-body leading-relaxed">
+              <div className="space-y-4 text-white/80 font-body leading-relaxed">
                 <p>Phase 1: MVP development and beta testing with select users</p>
                 <p>Phase 2: Product launch with targeted digital marketing campaigns</p>
                 <p>Phase 3: Scale through partnerships and word-of-mouth growth</p>
@@ -256,7 +253,7 @@ const Index = () => {
 
             <GlassCard className="p-8">
               <h3 className="text-2xl font-display font-semibold text-white mb-6">Financial Projections</h3>
-              <div className="space-y-4 text-white/70 font-body leading-relaxed">
+              <div className="space-y-4 text-white/80 font-body leading-relaxed">
                 <p>Year 1 Revenue: $100K - $500K</p>
                 <p>Year 2 Revenue: $1M - $5M</p>
                 <p>Year 3 Revenue: $5M - $15M</p>
@@ -270,45 +267,46 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-800 relative">
-      {/* Background Image */}
+    <div className="min-h-screen relative">
+      {/* Background Image - Clean and Visible */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-10"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/lovable-uploads/a4bb8de8-fdb3-410a-9d63-9a22c4f6f69c.png)' }}
       />
+      <div className="fixed inset-0 bg-black/20" />
       
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
-        <div className="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 clean-nav">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <h1 className="font-display text-2xl font-bold text-white">Spuddish Garden</h1>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="text-white/70 hover:text-white hover:bg-white/5 font-medium">
+            <Button variant="ghost" className="text-white/80 hover:text-white hover:bg-white/10 font-medium">
               About
             </Button>
-            <Button variant="ghost" className="text-white/70 hover:text-white hover:bg-white/5 font-medium">
+            <Button variant="ghost" className="text-white/80 hover:text-white hover:bg-white/10 font-medium">
               Contact
             </Button>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <div className="pt-28 px-8 max-w-6xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-7xl font-display font-bold text-white mb-8 leading-tight">
+      {/* Content */}
+      <div className="relative z-10 pt-20 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16 mt-12">
+          <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-8 leading-tight">
             Cultivate Your Next
-            <span className="block text-gradient mt-2">
+            <span className="block text-white/90 mt-2">
               Big Idea
             </span>
           </h2>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto font-body leading-relaxed">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto font-body leading-relaxed">
             Discover expertly curated, co-founder validated startup opportunities for 2025
           </p>
         </div>
         
         {/* Featured Idea */}
         {featuredIdea && (
-          <div className="mb-20">
+          <div className="mb-16">
             <GlassCard 
               className="p-8 max-w-4xl mx-auto"
               onClick={() => setSelectedIdea(featuredIdea.id)}
@@ -323,24 +321,24 @@ const Index = () => {
                 </div>
               </div>
               <h3 className="text-3xl font-display font-bold text-white mb-4">{featuredIdea.title}</h3>
-              <p className="text-white/70 text-lg mb-8 font-body leading-relaxed">{featuredIdea.description}</p>
+              <p className="text-white/80 text-lg mb-8 font-body leading-relaxed">{featuredIdea.description}</p>
               <div className="flex flex-wrap gap-6">
-                <div className="flex items-center gap-2 text-white/80">
+                <div className="flex items-center gap-2 text-white/90">
                   <DollarSign className="w-5 h-5 text-emerald-400" />
                   <span className="font-medium">{featuredIdea.marketSize} Market</span>
                 </div>
-                <div className="flex items-center gap-2 text-white/80">
+                <div className="flex items-center gap-2 text-white/90">
                   <TrendingUp className="w-5 h-5 text-blue-400" />
                   <span className={`font-medium ${getCompetitionColor(featuredIdea.competition)}`}>
                     {featuredIdea.competition} Competition
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-white/80">
+                <div className="flex items-center gap-2 text-white/90">
                   <Clock className="w-5 h-5 text-purple-400" />
                   <span className="font-medium">{featuredIdea.timeToMarket}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-2 mt-6 text-white/60">
+              <div className="flex items-center gap-2 mt-6 text-white/70">
                 <span className="font-medium">Explore this idea</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
@@ -352,17 +350,17 @@ const Index = () => {
         <div className="mb-16">
           <div className="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto">
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 w-5 h-5" />
               <Input
                 placeholder="Search startup ideas..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 glass-input text-white placeholder:text-white/40 h-14 text-lg font-body"
+                className="pl-12 clean-input text-white placeholder:text-white/60 h-14 text-lg font-body"
               />
             </div>
             
-            <div className="flex items-center gap-3 glass-button px-4 py-3">
-              <Filter className="text-white/60 w-5 h-5" />
+            <div className="flex items-center gap-3 clean-button px-4 py-3">
+              <Filter className="text-white/70 w-5 h-5" />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
@@ -387,7 +385,7 @@ const Index = () => {
               onClick={() => setSelectedIdea(idea.id)}
             >
               <div className="flex items-center justify-between mb-4">
-                <Badge className="glass-button border-white/10 text-white/80 font-medium">
+                <Badge className="clean-button border-white/30 text-white/90 font-medium">
                   {idea.category}
                 </Badge>
                 <div className="flex items-center gap-1">
@@ -397,28 +395,28 @@ const Index = () => {
               </div>
               
               <h3 className="text-xl font-display font-semibold text-white mb-3">{idea.title}</h3>
-              <p className="text-white/60 mb-6 line-clamp-3 font-body leading-relaxed">{idea.description}</p>
+              <p className="text-white/70 mb-6 line-clamp-3 font-body leading-relaxed">{idea.description}</p>
               
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-white/50 text-sm font-medium">Market Size</span>
+                  <span className="text-white/60 text-sm font-medium">Market Size</span>
                   <span className="text-white font-semibold">{idea.marketSize}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-white/50 text-sm font-medium">Competition</span>
+                  <span className="text-white/60 text-sm font-medium">Competition</span>
                   <span className={`font-semibold ${getCompetitionColor(idea.competition)}`}>
                     {idea.competition}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-white/50 text-sm font-medium">Time to Market</span>
+                  <span className="text-white/60 text-sm font-medium">Time to Market</span>
                   <span className="text-white font-semibold">{idea.timeToMarket}</span>
                 </div>
               </div>
               
               <div className="flex flex-wrap gap-2 mt-6">
                 {idea.tags.slice(0, 2).map((tag, index) => (
-                  <Badge key={index} variant="outline" className="text-xs border-white/20 text-white/60">
+                  <Badge key={index} variant="outline" className="text-xs border-white/30 text-white/70">
                     {tag}
                   </Badge>
                 ))}
@@ -428,18 +426,18 @@ const Index = () => {
         </div>
 
         {/* Footer */}
-        <footer className="text-center py-16 border-t border-white/10 glass-nav">
-          <div className="text-white/40 mb-6 font-body">
+        <footer className="text-center py-16 border-t border-white/20">
+          <div className="text-white/60 mb-6 font-body">
             © 2025 Spuddish Garden. Cultivating the future of startups.
           </div>
           <div className="flex justify-center gap-8">
-            <Button variant="ghost" className="text-white/40 hover:text-white/70 hover:bg-white/5">
+            <Button variant="ghost" className="text-white/60 hover:text-white/80 hover:bg-white/10">
               Privacy
             </Button>
-            <Button variant="ghost" className="text-white/40 hover:text-white/70 hover:bg-white/5">
+            <Button variant="ghost" className="text-white/60 hover:text-white/80 hover:bg-white/10">
               Terms
             </Button>
-            <Button variant="ghost" className="text-white/40 hover:text-white/70 hover:bg-white/5">
+            <Button variant="ghost" className="text-white/60 hover:text-white/80 hover:bg-white/10">
               Contact
             </Button>
           </div>

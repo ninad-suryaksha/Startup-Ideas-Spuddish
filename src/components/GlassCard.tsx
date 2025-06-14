@@ -14,7 +14,7 @@ export const GlassCard = ({ children, className = "", onClick, hover = true }: G
     <Card
       className={`
         glass-card
-        ${hover ? 'hover-lift hover:bg-white/[0.06] hover:border-white/[0.12]' : ''}
+        ${hover ? 'hover-lift hover:bg-white/15 hover:border-white/30' : ''}
         ${onClick ? 'cursor-pointer' : ''}
         transition-all duration-300 ease-out
         ${className}

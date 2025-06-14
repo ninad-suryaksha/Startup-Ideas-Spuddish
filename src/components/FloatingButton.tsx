@@ -20,8 +20,8 @@ export const FloatingButton = ({
       variant={variant}
       onClick={onClick}
       className={`
-        glass-button
-        text-white/90 font-medium font-body
+        clean-button
+        text-white font-medium font-body
         px-6 py-3 h-auto
         ${className}
       `}
