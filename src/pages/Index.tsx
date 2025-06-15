@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -67,33 +68,30 @@ const Index = () => {
   if (selectedIdea) {
     const idea = startupIdeas.find(i => i.id === selectedIdea);
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         {/* Hero Section */}
         <div 
-          className="relative w-full overflow-hidden"
+          className="relative w-full overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"
           style={{ aspectRatio: '2.35/1' }}
         >
-          <div 
-            className="absolute inset-0 bg-contain bg-center bg-no-repeat bg-black"
-            style={{ backgroundImage: 'url(/lovable-uploads/44974d19-da48-4d1d-9cb2-394df3f61a52.png)' }}
-          />
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           
           {/* Navigation */}
           <nav className="absolute top-0 left-0 right-0 z-50 p-8">
             <div className="flex items-center justify-between">
               <button 
                 onClick={() => setSelectedIdea(null)}
-                className="text-white text-sm tracking-wider hover:opacity-70 transition-opacity"
+                className="text-white text-sm tracking-wider hover:opacity-70 transition-opacity flex items-center gap-2"
               >
                 ← BACK
               </button>
+              <div className="text-white text-sm tracking-wider">2025</div>
             </div>
           </nav>
 
-          {/* Title on image */}
+          {/* Title on hero */}
           <div className="absolute bottom-8 left-8">
-            <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight">
               {idea.title}
             </h1>
           </div>
@@ -133,19 +131,27 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div 
-        className="relative w-full overflow-hidden"
+        className="relative w-full overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"
         style={{ aspectRatio: '2.35/1' }}
       >
-        <div 
-          className="absolute inset-0 bg-contain bg-center bg-no-repeat bg-black"
-          style={{ backgroundImage: 'url(/lovable-uploads/44974d19-da48-4d1d-9cb2-394df3f61a52.png)' }}
-        />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         
         {/* Navigation */}
         <nav className="absolute top-0 left-0 right-0 z-50 p-8">
           <div className="flex items-center justify-between">
-            <div className="text-white text-sm tracking-wider">SPUDDISH GARDEN</div>
+            {/* Animated Potato Logo */}
+            <div className="group cursor-pointer">
+              <img 
+                src="/lovable-uploads/6aa0175d-2a66-40cc-884c-0a6d0eee3688.png" 
+                alt="Spuddish Garden"
+                className="w-12 h-12 transition-opacity duration-300 group-hover:opacity-0 absolute"
+              />
+              <img 
+                src="/lovable-uploads/27bc7be9-4cfe-46b2-a139-755d766cbbe5.png" 
+                alt="Spuddish Garden Hover"
+                className="w-12 h-12 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+              />
+            </div>
             <div className="text-white text-sm tracking-wider">2025</div>
           </div>
         </nav>
