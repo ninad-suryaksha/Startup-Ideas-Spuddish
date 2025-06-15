@@ -153,7 +153,7 @@ const Index = () => {
 
         {/* Hero text positioned to avoid center */}
         <div className="absolute bottom-8 left-8 right-8">
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-light text-white tracking-tight leading-none">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-white tracking-tight leading-none">
             CULTIVATE<br />
             YOUR NEXT<br />
             BIG IDEA
