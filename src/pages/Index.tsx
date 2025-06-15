@@ -76,7 +76,7 @@ const Index = () => {
         >
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: 'url(/lovable-uploads/a4bb8de8-fdb3-410a-9d63-9a22c4f6f69c.png)' }}
+            style={{ backgroundImage: 'url(/lovable-uploads/44974d19-da48-4d1d-9cb2-394df3f61a52.png)' }}
           />
           <div className="absolute inset-0 bg-black/20" />
           
@@ -139,7 +139,7 @@ const Index = () => {
       >
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/lovable-uploads/a4bb8de8-fdb3-410a-9d63-9a22c4f6f69c.png)' }}
+          style={{ backgroundImage: 'url(/lovable-uploads/44974d19-da48-4d1d-9cb2-394df3f61a52.png)' }}
         />
         <div className="absolute inset-0 bg-black/20" />
         
