@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -75,7 +74,7 @@ const Index = () => {
           style={{ aspectRatio: '2.35/1' }}
         >
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-contain bg-center bg-no-repeat bg-black"
             style={{ backgroundImage: 'url(/lovable-uploads/44974d19-da48-4d1d-9cb2-394df3f61a52.png)' }}
           />
           <div className="absolute inset-0 bg-black/20" />
@@ -138,7 +137,7 @@ const Index = () => {
         style={{ aspectRatio: '2.35/1' }}
       >
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-contain bg-center bg-no-repeat bg-black"
           style={{ backgroundImage: 'url(/lovable-uploads/44974d19-da48-4d1d-9cb2-394df3f61a52.png)' }}
         />
         <div className="absolute inset-0 bg-black/20" />
