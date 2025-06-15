@@ -293,8 +293,11 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-10 pt-20 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16 mt-12">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-8 leading-tight">
-            Cultivate Your Next Big Idea
+          <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-8 leading-tight">
+            Cultivate Your Next
+            <span className="block text-white/90 mt-2">
+              Big Idea
+            </span>
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto font-body leading-relaxed">
             Discover expertly curated, co-founder validated startup opportunities for 2025
